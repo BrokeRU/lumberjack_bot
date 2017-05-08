@@ -55,18 +55,20 @@ def check_branches():
         im.save(os.getcwd() + '\\' + cur_time + '\\scr_' + datetime.now().strftime('%H-%M-%S-%f') + '.png', 'PNG')
     
     # check for game over
-    if im.getpixel((0, 60)) == you_scored_label_color and im.getpixel((0, 61)) == you_scored_label_color:
-        print("Finish.")
-        exit()
+    for i in range(row_gameover_from, row_gameover_to+1):
+        for j in range(0, im.width, 7):
+            if im.getpixel((j, i)) == you_scored_label_color:
+                print("Finish.")
+                exit()
     
     # check for tree branches
-    for y in range(246, 0, -11):
+    for y in range((im.height-1), 0, -11):
         if debug:
-            print("8:%i" % y, im.getpixel((8, y)));
-            print("113:%i" % y, im.getpixel((113, y)));
+            print("%i:%i" % (left_column, y), im.getpixel((left_column, y)));
+            print("%i:%i" % (right_column, y), im.getpixel((right_column, y)));
         
         # check left side for branches
-        if im.getpixel((8, y)) == tree_color:
+        if im.getpixel((left_column, y)) == tree_color:
             print(points, "RIGHT")
             shell.SendKeys("{RIGHT 2}")
             points += 2
@@ -76,7 +78,7 @@ def check_branches():
                 time.sleep(sleep_after_limit)
             break
         # check right side for branches
-        elif im.getpixel((113, y)) == tree_color:
+        elif im.getpixel((right_column, y)) == tree_color:
             print(points, "LEFT")
             shell.SendKeys("{LEFT 2}")
             points += 2
