@@ -4,7 +4,6 @@ import time
 import win32api, win32con
 import win32com.client
 from PIL import ImageOps
-from numpy import *
 from settings import *
 
 # Name of dir store screenshots
