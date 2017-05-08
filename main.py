@@ -1,6 +1,7 @@
 from PIL import ImageGrab 
 import os
 import time
+from datetime import datetime
 import win32api, win32con
 import win32com.client
 from PIL import ImageOps
@@ -8,7 +9,7 @@ from settings import *
 from screen_settings import *
 
 # Name of dir store screenshots
-cur_time = time.strftime('%Y-%m-%d %H-%M-%S', time.gmtime())
+cur_time = datetime.now().strftime('%Y-%m-%d %H-%M-%S')
 
 # VBScript objects to push keys
 shell = win32com.client.Dispatch("WScript.Shell")
@@ -51,7 +52,7 @@ def check_branches():
     
     # try to save every screenshot taked
     if debug:
-        im.save(os.getcwd() + '\\' + cur_time + '\\scr_' + str(int(time.time())) + '.png', 'PNG')
+        im.save(os.getcwd() + '\\' + cur_time + '\\scr_' + datetime.now().strftime('%H-%M-%S-%f') + '.png', 'PNG')
     
     # check for game over
     if im.getpixel((0, 60)) == you_scored_label_color and im.getpixel((0, 61)) == you_scored_label_color:
@@ -87,7 +88,7 @@ def check_branches():
     else:
         print("Can't parse image correctly!")
         if debug:
-            im.save(os.getcwd() + '\\' + cur_time + '\\error_' + str(int(time.time())) + '.png', 'PNG')
+            im.save(os.getcwd() + '\\' + cur_time + '\\error_' + datetime.now().strftime('%H-%M-%S-%f') + '.png', 'PNG')
         time.sleep(sleep_error)
 
 
