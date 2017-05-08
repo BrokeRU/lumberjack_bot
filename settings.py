@@ -7,7 +7,7 @@ debug = 1
 
 # Colors
 tree_color = (161, 116, 56)
-you_scored_label_color = (77, 77, 77)
+score_color = (77, 77, 77)
 
 # Speed settings
 limit = 650

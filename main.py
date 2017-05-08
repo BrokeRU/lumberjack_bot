@@ -64,13 +64,6 @@ def check_branches():
     if debug >= 3:
         im.save(os.getcwd() + '\\' + cur_time + '\\scr_' + datetime.now().strftime('%H-%M-%S-%f') + '.png', 'PNG')
     
-    # check for game over
-    for i in range(row_gameover_from, row_gameover_to+1):
-        for j in range(0, im.width, 7):
-            if im.getpixel((j, i)) == you_scored_label_color:
-                print("Finish.")
-                exit()
-    
     # check for tree branches
     for y in range((im.height-1), 0, -11):
         if debug >= 2:
@@ -102,7 +95,11 @@ def check_branches():
         if debug >= 1:
             im.save(os.getcwd() + '\\' + cur_time + '\\error_' + datetime.now().strftime('%H-%M-%S-%f') + '.png', 'PNG')
         time.sleep(sleep_error)
-
+        
+        # check for game over
+        if im.getpixel((60, 60)) == score_color:
+            print("Finish.")
+            exit()
 
 def main():
     if debug >= 1:
