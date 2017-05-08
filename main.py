@@ -7,6 +7,13 @@ import win32com.client
 from PIL import ImageOps
 from settings import *
 from screen_settings import *
+import argparse
+
+parser = argparse.ArgumentParser(description='Plays LumberJack game automatically. Needs browser window to be visible.')
+parser.add_argument("--debug", help="change debug level (correct values are 0,1,2,3)", type=int)
+args = parser.parse_args()
+if args.debug is not None:
+    debug = args.debug
 
 # Starting points count
 points = 0
