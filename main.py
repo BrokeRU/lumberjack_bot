@@ -115,7 +115,7 @@ def check_branches():
         time.sleep(sleep_error)
         
         # check for game over
-        if im.getpixel((60, 56)) == score_color:
+        if im.getpixel((35, 0)) != tree_color:
             print("Finish.")
             exit()
     
