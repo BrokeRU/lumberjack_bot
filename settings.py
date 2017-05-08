@@ -10,9 +10,6 @@ height = 248
 # Starting points count
 points = 0
 
-# Name of dir store screenshots
-cur_time = time.strftime('%Y-%m-%d %H-%M-%S', time.gmtime())
-
 # Colors
 tree_color = (161, 116, 56)
 you_scored_label_color = (77, 77, 77)

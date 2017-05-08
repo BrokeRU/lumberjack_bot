@@ -5,7 +5,10 @@ import win32api, win32con
 import win32com.client
 from PIL import ImageOps
 from numpy import *
-import settings
+from settings import *
+
+# Name of dir store screenshots
+cur_time = time.strftime('%Y-%m-%d %H-%M-%S', time.gmtime())
 
 # VBScript objects to push keys
 shell = win32com.client.Dispatch("WScript.Shell")
