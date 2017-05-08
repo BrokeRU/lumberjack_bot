@@ -5,6 +5,7 @@ import win32api, win32con
 import win32com.client
 from PIL import ImageOps
 from settings import *
+from screen_settings import *
 
 # Name of dir store screenshots
 cur_time = time.strftime('%Y-%m-%d %H-%M-%S', time.gmtime())

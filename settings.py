@@ -1,12 +1,6 @@
 # Debug mode; set to True to get tons of info
 debug = False
 
-# Offset for screen_grab
-x_pad = 622
-y_pad = 99
-width = 127
-height = 248
-
 # Starting points count
 points = 0
 
