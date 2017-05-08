@@ -89,7 +89,7 @@ def check_branches():
         # check for game over
         if im.getpixel((60, 60)) == score_color:
             print("Finish.")
-            exit
+            exit()
 
 def main():
     if debug:
