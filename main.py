@@ -51,7 +51,7 @@ def check_branches():
     im = screen_grab()
     
     # try to save every screenshot taked
-    if debug:
+    if debug >= 3:
         im.save(os.getcwd() + '\\' + cur_time + '\\scr_' + datetime.now().strftime('%H-%M-%S-%f') + '.png', 'PNG')
     
     # check for game over
@@ -63,7 +63,7 @@ def check_branches():
     
     # check for tree branches
     for y in range((im.height-1), 0, -11):
-        if debug:
+        if debug >= 2:
             print("%i:%i" % (left_column, y), im.getpixel((left_column, y)));
             print("%i:%i" % (right_column, y), im.getpixel((right_column, y)));
         
@@ -89,13 +89,13 @@ def check_branches():
             break
     else:
         print("Can't parse image correctly!")
-        if debug:
+        if debug >= 1:
             im.save(os.getcwd() + '\\' + cur_time + '\\error_' + datetime.now().strftime('%H-%M-%S-%f') + '.png', 'PNG')
         time.sleep(sleep_error)
 
 
 def main():
-    if debug:
+    if debug >= 1:
         print("Created dir:", cur_time)
         os.mkdir(cur_time)
     

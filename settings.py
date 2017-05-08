@@ -1,5 +1,9 @@
-# Debug mode; set to True to get tons of info
-debug = False
+# Debug mode:
+# 0 - off
+# 1 - save screenshots with errors
+# 2 - show pixels' info (coordinates, color)
+# 3 - save all screenshots
+debug = 1
 
 # Starting points count
 points = 0
