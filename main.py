@@ -11,7 +11,7 @@ import argparse
 
 # argparser
 parser = argparse.ArgumentParser(description='Plays LumberJack game automatically. Needs browser window to be visible.')
-parser.add_argument("--debug", help="change debug level (correct values are 0,1,2,3)", type=int)
+parser.add_argument("--debug", help="change debug level (correct values are 0,1,2,3,4)", type=int)
 args = parser.parse_args()
 
 # Use debug argument if given
@@ -63,9 +63,8 @@ def check_branches():
     
     im = screen_grab()
     
-    # try to save every screenshot taked
-    if debug >= 3:
-        im.save(os.getcwd() + '\\' + cur_time + '\\scr_' + datetime.now().strftime('%H-%M-%S-%f') + '.png', 'PNG')
+    if debug >= 4:
+        pix = im.load()
     
     # check for tree branches
     for y in range((im.height-1), 0, -11):
@@ -77,7 +76,12 @@ def check_branches():
         if im.getpixel((left_column, y)) == tree_color:
             print(points, "RIGHT")
             shell.SendKeys("{RIGHT 2}")
+            
             points += 2
+            
+            if debug >= 4:
+                pix[left_column, y] = blue
+            
             if points < limit:
                 time.sleep(sleep_before_limit)
             else:
@@ -87,12 +91,23 @@ def check_branches():
         elif im.getpixel((right_column, y)) == tree_color:
             print(points, "LEFT")
             shell.SendKeys("{LEFT 2}")
+            
             points += 2
+            
+            if debug >= 4:
+                pix[right_column, y] = blue
+            
             if points < limit:
                 time.sleep(sleep_before_limit)
             else:
                 time.sleep(sleep_after_limit)
             break
+        
+        if debug >= 4:
+            # draw left side red points
+            pix[left_column, y] = red
+            # draw right side red points
+            pix[right_column, y] = red
     else:
         print("Can't parse image correctly!")
         if debug >= 1:
@@ -103,6 +118,10 @@ def check_branches():
         if im.getpixel((60, 60)) == score_color:
             print("Finish.")
             exit()
+    
+    # try to save every screenshot taked
+    if debug >= 3:
+        im.save(os.getcwd() + '\\' + cur_time + '\\scr_' + datetime.now().strftime('%H-%M-%S-%f') + '.png', 'PNG')
 
 def main():
     if debug >= 1:
