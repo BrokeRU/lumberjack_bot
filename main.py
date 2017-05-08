@@ -91,8 +91,9 @@ def check_branches():
 
 
 def main():
-    print("Created dir:", cur_time)
-    os.mkdir(cur_time)
+    if debug:
+        print("Created dir:", cur_time)
+        os.mkdir(cur_time)
     
     start_game()
     while True:
