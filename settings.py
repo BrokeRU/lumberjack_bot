@@ -5,9 +5,6 @@
 # 3 - save all screenshots
 debug = 1
 
-# Starting points count
-points = 0
-
 # Colors
 tree_color = (161, 116, 56)
 you_scored_label_color = (77, 77, 77)

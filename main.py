@@ -8,6 +8,9 @@ from PIL import ImageOps
 from settings import *
 from screen_settings import *
 
+# Starting points count
+points = 0
+
 # Name of dir store screenshots
 cur_time = datetime.now().strftime('%Y-%m-%d %H-%M-%S')
 
